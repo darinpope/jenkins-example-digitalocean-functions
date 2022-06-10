@@ -22,16 +22,16 @@ pipeline {
     stage('Get URL for hello') {
       steps {
         script {
-          def url = sh(script:'doctl sls fn get sample/hello --url',returnStdout:true);
-          sh(script:'curl $url?name=Jenkins');
+          def url = sh(script:'doctl sls fn get sample/hello --url',returnStdout:true).trim();
+          sh(script:"curl $url?name=Jenkins");
         }
       }
     }
     stage('Get URL for goodbye') {
       steps {
         script {
-          def url = sh(script:'doctl sls fn get sample/goodbye --url',returnStdout:true);
-          sh(script:'curl $url?name=Jenkins');
+          def url = sh(script:'doctl sls fn get sample/goodbye --url',returnStdout:true).trim();
+          sh(script:"curl $url?name=Jenkins");
         }
       }
     }
