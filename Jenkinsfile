@@ -19,9 +19,14 @@ pipeline {
         sh 'doctl sls deploy .'
       }
     }
-    stage('Get URL') {
+    stage('Get URL for hello') {
       steps {
         sh 'doctl sls fn get sample/hello --url'
+      }
+    }
+    stage('Get URL for goodbye') {
+      steps {
+        sh 'doctl sls fn get sample/goodbye --url'
       }
     }
   }
